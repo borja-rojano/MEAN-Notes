@@ -1,6 +1,5 @@
 # Promises
-### Intro
-# Fulfilling a Promise
+### Fulfilling a Promise
 
 Promises have an important internal property: its state. A promise is one of:
 
@@ -11,9 +10,9 @@ Promises have an important internal property: its state. A promise is one of:
 Sometimes you will also hear the term “resolved.” For now, you can treat it as
 meaning either fulfilled or rejected.
 
-Most promises are created with new Promise(executor), in which executor is
-a callback function with the signature function (fulfill, reject). Inside
-executor, either fulfill or reject is called, to indicate the outcome of
+Most promises are created with `new Promise(executor)`, in which executor is
+a callback function with the signature `function (fulfill, reject)`. Inside
+executor, either function fulfill or reject is called, to indicate the outcome of
 the operation. For promises, fulfilling means that the operation successfully
 completes and yields a value. In order to pass this value along, call fulfill
 function with this value as the first parameter.
@@ -35,4 +34,18 @@ If you call fulfill function in executor without a parameter, the
 onFulfilled callback(s) will still be called, but the parameter to those
 callbacks will be undefined.
 
-We will talk about rejecting in our next lesson.
+The simplest way of defining a promise
+
+```javascript
+
+'use strict';
+
+var myPromise = new Promise(function (fulfill, reject) {
+    setTimeout(fulfill('FULFILED!'), 300);
+});
+
+myPromise.then(function (result) {
+    console.log(result); 
+});
+
+```
